@@ -35,4 +35,25 @@ public class AppointmentService {
     public int updateAppointmentStatus(int appointmentId) {
         return appointmentRepository.updateAppointmentStatus(appointmentId);
     }
+
+    public Appointment updateAppointment(int id, Appointment updatedAppointment) {
+        return appointmentRepository.findById(id).map(appointment -> {
+            appointment.setDate(updatedAppointment.getDate());
+            appointment.setDoctorId(updatedAppointment.getDoctorId());
+            appointment.setPatientId(updatedAppointment.getPatientId());
+            appointment.setDiagnosis(updatedAppointment.getDiagnosis());
+            appointment.setMedication(updatedAppointment.getMedication());
+            appointment.setProcedure(updatedAppointment.getProcedure());
+            appointment.setSurgery(updatedAppointment.getSurgery());
+            appointment.setStatus(updatedAppointment.isStatus());
+            return appointmentRepository.save(appointment);
+        }).orElseGet(() -> {
+            updatedAppointment.setId(id);
+            return appointmentRepository.save(updatedAppointment);
+        });
+    }
+
+    public void deleteAppointment(int id) {
+        appointmentRepository.deleteById(id);
+    }
 }

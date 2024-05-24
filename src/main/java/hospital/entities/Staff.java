@@ -5,7 +5,11 @@ import jakarta.persistence.Table;
 
 import java.util.Objects;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "staff")
 public class Staff {
@@ -30,9 +34,7 @@ public class Staff {
         this.password = password;
     }
 
-    public Staff() {
-
-    }
+    public Staff() {}
 
     @Override
     public boolean equals(Object obj) {
@@ -60,27 +62,4 @@ public class Staff {
                 ", password='" + password + '\'' +
                 '}';
     }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getLastName(){
-        return last_name;
-    }
-
-    public String getFirstName(){
-        return first_name;
-    }
-    public String getPatronymic(){
-        return patronymic;
-    }
-    public String getPosition(){
-        return position;
-    }
-    public String getEmail(){ return email; }
-    public String getPassword(){ return password; }
-
-
-
 }

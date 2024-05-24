@@ -3,9 +3,13 @@ package hospital.entities;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Objects;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "appointment")
 public class Appointment {
@@ -88,44 +92,5 @@ public class Appointment {
     }
 
 
-    public int getId() {
-        return id;
-    }
-
-    public boolean isStatus() {
-        return status;
-    }
-
-    public int getDoctorId() {
-        return doctorId;
-    }
-
-    public int getPatientId() {
-        return patientId;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public String getDiagnosis() {
-        return diagnosis;
-    }
-
-    public String getMedication() {
-        return medication;
-    }
-
-    public String getProcedure() {
-        return procedure;
-    }
-
-    public String getSurgery() {
-        return surgery;
-    }
-
-    public boolean getStatus(){
-       return status;
-    }
 
 }

@@ -38,4 +38,14 @@ public class AppointmentController {
     public int updateAppointmentStatus(@PathVariable int id) {
         return appointmentService.updateAppointmentStatus(id);
     }
+
+    @PutMapping("/{id}")
+    public Appointment updateAppointment(@PathVariable int id, @RequestBody Appointment appointment) {
+        return appointmentService.updateAppointment(id, appointment);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteAppointment(@PathVariable int id) {
+        appointmentService.deleteAppointment(id);
+    }
 }

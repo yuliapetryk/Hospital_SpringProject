@@ -22,4 +22,5 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Intege
     @Query("UPDATE Appointment a SET a.status = true WHERE a.id = ?1")
     int updateAppointmentStatus(int id);
 
+
 }

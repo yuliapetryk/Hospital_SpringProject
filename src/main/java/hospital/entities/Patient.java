@@ -2,10 +2,12 @@ package hospital.entities;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Objects;
 
 @Getter
+@Setter
 @Entity
 @Table(name = "patients")
 public class Patient {
@@ -85,38 +87,6 @@ public class Patient {
                 ", phone='" + phone + '\'' +
                 ", password='" + password + '\'' +
                 '}';
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setLastName(String last_name) {
-        this.last_name = last_name;
-    }
-
-    public void setFirstName(String first_name) {
-        this.first_name = first_name;
-    }
-
-    public void setPatronymic(String patronymic) {
-        this.patronymic = patronymic;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public void setDateOfBirth(String date_of_birth) {
-        this.date_of_birth = date_of_birth;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
 }
