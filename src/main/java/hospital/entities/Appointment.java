@@ -11,7 +11,7 @@ import java.util.Objects;
 @Getter
 @Setter
 @Entity
-@Table(name = "appointment")
+@Table(name = "appointments")
 public class Appointment {
 
     @Id
@@ -20,44 +20,40 @@ public class Appointment {
     private int doctorId;
     private int patientId;
     private String diagnosis;
-    private  String medication;
     private  String procedure;
-    private  String surgery;
+    private  String details;
     private  boolean status;
 
-   public Appointment( String date, int doctorId, int patientId, String diagnosis,String medication, String procedure, String surgery){
+   public Appointment( String date, int doctorId, int patientId, String diagnosis, String procedure, String details){
     this.date = date;
     this.doctorId = doctorId;
     this.patientId = patientId;
     this.diagnosis = diagnosis;
     this.procedure = procedure;
-    this.medication = medication;
-    this.surgery = surgery;
+    this.details  = details;
     }
 
-    public Appointment( int id, String date, int doctorId, int patientId, String diagnosis,String medication, String procedure, String surgery){
+    public Appointment( int id, String date, int doctorId, int patientId, String diagnosis, String procedure, String details){
         this.id  = id;
         this.date = date;
         this.doctorId = doctorId;
         this.patientId = patientId;
         this.diagnosis = diagnosis;
         this.procedure = procedure;
-        this.medication = medication;
-        this.surgery = surgery;
+        this.details = details;
     }
 
     public Appointment() {
     }
 
-    public Appointment( int id, String date, int doctorId, int patientId, String diagnosis,String medication, String procedure, String surgery, boolean status){
+    public Appointment( int id, String date, int doctorId, int patientId, String diagnosis, String procedure, String details, boolean status){
         this.id  = id;
         this.date = date;
         this.doctorId = doctorId;
         this.patientId = patientId;
         this.diagnosis = diagnosis;
         this.procedure = procedure;
-        this.medication = medication;
-        this.surgery = surgery;
+        this.details = details;
         this.status = status;
     }
 
@@ -71,9 +67,8 @@ public class Appointment {
                 status == appointment.status &&
                 Objects.equals(date, appointment.date) &&
                 Objects.equals(diagnosis, appointment.diagnosis) &&
-                Objects.equals(medication, appointment.medication) &&
                 Objects.equals(procedure, appointment.procedure) &&
-                Objects.equals(surgery, appointment.surgery);
+                Objects.equals(details, appointment.details) ;
     }
 
     @Override
@@ -84,9 +79,8 @@ public class Appointment {
                 ", doctorId=" + doctorId +
                 ", patientId=" + patientId +
                 ", diagnosis='" + diagnosis + '\'' +
-                ", medication='" + medication + '\'' +
                 ", procedure='" + procedure + '\'' +
-                ", surgery='" + surgery + '\'' +
+                ", details='" + details + '\'' +
                 ", status=" + status +
                 '}';
     }

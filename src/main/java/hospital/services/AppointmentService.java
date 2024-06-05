@@ -42,9 +42,8 @@ public class AppointmentService {
             appointment.setDoctorId(updatedAppointment.getDoctorId());
             appointment.setPatientId(updatedAppointment.getPatientId());
             appointment.setDiagnosis(updatedAppointment.getDiagnosis());
-            appointment.setMedication(updatedAppointment.getMedication());
             appointment.setProcedure(updatedAppointment.getProcedure());
-            appointment.setSurgery(updatedAppointment.getSurgery());
+            appointment.setDetails(updatedAppointment.getDetails());
             appointment.setStatus(updatedAppointment.isStatus());
             return appointmentRepository.save(appointment);
         }).orElseGet(() -> {
@@ -55,5 +54,9 @@ public class AppointmentService {
 
     public void deleteAppointment(int id) {
         appointmentRepository.deleteById(id);
+    }
+
+    public List<Appointment> getAppointmentsWithoutSurgery() {
+        return appointmentRepository.findByProcedureNot("surgery");
     }
 }
