@@ -2,6 +2,7 @@ package hospital.entities;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Setter;
 
 import java.util.Objects;
@@ -12,7 +13,9 @@ import java.util.Objects;
 @Table(name = "patients")
 public class Patient {
     @Id
-    private int id;
+    @GeneratedValue(strategy =  GenerationType.IDENTITY)
+    @NonNull
+    private long id;
 
     @Column(name = "last_name")
     private String last_name;
@@ -34,14 +37,13 @@ public class Patient {
 
 
 
-    public Patient(int id,
+    public Patient(
                    String last_name,
                    String first_name,
                    String patronymic,
                    String sex,
                    String date_of_birth,
                    String phone) {
-        this.id = id;
         this.last_name = last_name;
         this.first_name = first_name;
         this.patronymic = patronymic;

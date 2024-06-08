@@ -1,9 +1,8 @@
 package hospital.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Setter;
 
 import java.util.Objects;
@@ -15,6 +14,8 @@ import java.util.Objects;
 public class Appointment {
 
     @Id
+    @GeneratedValue(strategy =  GenerationType.IDENTITY)
+    @NonNull
     private int id;
     private String date;
     private int doctorId;

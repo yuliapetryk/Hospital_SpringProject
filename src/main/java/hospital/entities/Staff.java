@@ -24,8 +24,8 @@ public class Staff {
     private  String  position;
     private  String  password;
 
-   public Staff( int id, String last_name, String first_name, String patronymic, String  position, String email, String password) {
-        this.id = id;
+   public Staff(  String last_name, String first_name, String patronymic, String  position, String email, String password) {
+
         this.last_name = last_name;
         this.first_name = first_name;
         this.patronymic = patronymic;
