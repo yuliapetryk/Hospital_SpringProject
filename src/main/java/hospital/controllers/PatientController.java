@@ -12,7 +12,7 @@ import java.util.List;
 
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3030")
+@RequestMapping("/patients")
 public class PatientController {
     private static final Logger logger = LoggerFactory.getLogger(PatientController.class);
 
@@ -23,7 +23,7 @@ public class PatientController {
         this.patientService = patientService;
     }
 
-    @GetMapping("/patients")
+    @GetMapping("/patientsAll")
     public List<Patient> getPatients() {
         List<Patient> patients = patientService.getPatients();
         logger.info("Retrieved patients: {}", patients);

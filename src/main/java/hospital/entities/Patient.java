@@ -32,9 +32,6 @@ public class Patient {
     @Column(name = "phone")
     private String phone;
 
-    @Column(name = "password")
-    private String password;
-
 
 
     public Patient(int id,
@@ -43,8 +40,7 @@ public class Patient {
                    String patronymic,
                    String sex,
                    String date_of_birth,
-                   String phone,
-                   String password) {
+                   String phone) {
         this.id = id;
         this.last_name = last_name;
         this.first_name = first_name;
@@ -52,7 +48,6 @@ public class Patient {
         this.sex = sex;
         this.date_of_birth = date_of_birth;
         this.phone = phone;
-        this.password = password;
 
     }
 
@@ -71,8 +66,7 @@ public class Patient {
                 Objects.equals(patronymic, patient.patronymic) &&
                 Objects.equals(sex, patient.sex) &&
                 Objects.equals(date_of_birth, patient.date_of_birth) &&
-                Objects.equals(phone, patient.phone) &&
-                Objects.equals(password, patient.password);
+                Objects.equals(phone, patient.phone) ;
     }
 
     @Override
@@ -85,7 +79,6 @@ public class Patient {
                 ", sex='" + sex + '\'' +
                 ", date_of_birth='" + date_of_birth + '\'' +
                 ", phone='" + phone + '\'' +
-                ", password='" + password + '\'' +
                 '}';
     }
 

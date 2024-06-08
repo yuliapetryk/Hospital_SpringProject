@@ -16,7 +16,7 @@ public class Appointment {
 
     @Id
     private int id;
-     private String date;
+    private String date;
     private int doctorId;
     private int patientId;
     private String diagnosis;

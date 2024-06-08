@@ -20,25 +20,25 @@ public class AppointmentController {
         this.appointmentService = appointmentService;
     }
 
-    @RolesAllowed("doctor")
-    @GetMapping
+
+    @GetMapping("/appointmentsAll")
     public List<Appointment> getAllAppointments() {
         return appointmentService.getAllAppointments();
     }
 
-    @RolesAllowed({"doctor", "nurse"})
-    @GetMapping("/patient/{patientId}")
+
+    @GetMapping("appointmentsPatient/{patientId}")
     public List<Appointment> getAppointmentsByPatientId(@PathVariable int patientId) {
         return appointmentService.getAppointmentsByPatientId(patientId);
     }
 
-    @RolesAllowed("doctor")
+
     @PostMapping
     public Appointment createAppointment(@RequestBody Appointment appointment) {
         return appointmentService.createAppointment(appointment);
     }
 
-    @RolesAllowed("doctor")
+
     @PutMapping("/{id}/status")
     public int updateAppointmentStatus(@PathVariable int id) {
         return appointmentService.updateAppointmentStatus(id);
