@@ -1,30 +1,47 @@
 package hospital.services;
 
 
+import hospital.dto.AppointmentDTO;
 import hospital.entities.Appointment;
 import hospital.repository.AppointmentRepository;
+import hospital.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class AppointmentService {
 
     private final AppointmentRepository appointmentRepository;
+    private final PatientRepository patientRepository;
 
     @Autowired
-    public AppointmentService(AppointmentRepository appointmentRepository) {
+    public AppointmentService(AppointmentRepository appointmentRepository, PatientRepository patientRepository) {
         this.appointmentRepository = appointmentRepository;
+        this.patientRepository = patientRepository;
     }
 
-    public List<Appointment> getAllAppointments() {
-        return appointmentRepository.findAll();
+    public List<AppointmentDTO> getAllAppointments() {
+        List<Appointment> appointments = appointmentRepository.findAll();
+
+        return appointments.stream()
+                .map(appointment -> {
+                    String nameParts = patientRepository.findNameById(appointment.getPatientId());
+                    String patientName = "";
+                    if (nameParts != null) {
+                        patientName = nameParts.replaceAll(",",  " ");
+                    }
+                    return new AppointmentDTO(appointment, patientName);
+                })
+                .collect(Collectors.toList());
     }
 
     public List<Appointment> getAppointmentsByPatientId(int patientId) {
-        return appointmentRepository.findAppointmentById(patientId);
+       return appointmentRepository.findAppointmentById(patientId);
+
     }
 
     public Appointment createAppointment(Appointment appointment) {

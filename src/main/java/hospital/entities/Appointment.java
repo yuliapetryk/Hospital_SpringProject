@@ -1,5 +1,6 @@
 package hospital.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NonNull;
@@ -18,14 +19,17 @@ public class Appointment {
     @NonNull
     private int id;
     private String date;
-    private int doctorId;
+    private String  doctorId;
     private int patientId;
     private String diagnosis;
     private  String procedure;
     private  String details;
     private  boolean status;
 
-   public Appointment( String date, int doctorId, int patientId, String diagnosis, String procedure, String details){
+    @JsonIgnore
+    private String patientName;
+
+    public Appointment( String date, String  doctorId, int patientId, String diagnosis, String procedure, String details){
     this.date = date;
     this.doctorId = doctorId;
     this.patientId = patientId;
@@ -34,7 +38,7 @@ public class Appointment {
     this.details  = details;
     }
 
-    public Appointment( int id, String date, int doctorId, int patientId, String diagnosis, String procedure, String details){
+    public Appointment( int id, String date,String  doctorId, int patientId, String diagnosis, String procedure, String details){
         this.id  = id;
         this.date = date;
         this.doctorId = doctorId;
@@ -47,7 +51,7 @@ public class Appointment {
     public Appointment() {
     }
 
-    public Appointment( int id, String date, int doctorId, int patientId, String diagnosis, String procedure, String details, boolean status){
+    public Appointment( int id, String date, String  doctorId, int patientId, String diagnosis, String procedure, String details, boolean status){
         this.id  = id;
         this.date = date;
         this.doctorId = doctorId;
@@ -87,5 +91,7 @@ public class Appointment {
     }
 
 
-
+    public void setPatientName(String patientName) {
+        this.patientName = patientName;
+    }
 }

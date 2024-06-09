@@ -15,8 +15,7 @@ import lombok.Setter;
 public class Staff {
 
     @Id
-    @GeneratedValue(strategy =  GenerationType.IDENTITY)
-    private int id;
+    private String id;
     private  String last_name;
     private  String first_name;
     private  String patronymic;

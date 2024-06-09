@@ -1,6 +1,7 @@
 package hospital.controllers;
 
 
+import hospital.dto.AppointmentDTO;
 import hospital.entities.Appointment;
 import hospital.services.AppointmentService;
 import jakarta.annotation.security.RolesAllowed;
@@ -22,7 +23,7 @@ public class AppointmentController {
 
 
     @GetMapping("/appointmentsAll")
-    public List<Appointment> getAllAppointments() {
+    public List<AppointmentDTO> getAllAppointments() {
         return appointmentService.getAllAppointments();
     }
 

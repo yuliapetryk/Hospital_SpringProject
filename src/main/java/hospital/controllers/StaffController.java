@@ -2,10 +2,9 @@ package hospital.controllers;
 
 import hospital.entities.Staff;
 import hospital.services.StaffService;
+import kong.unirest.HttpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/staff")
@@ -19,8 +18,8 @@ public class StaffController {
     }
 
     @GetMapping("/staffAll")
-    public List<Staff> getAllStaff() {
-        return staffService.getAllStaff();
+    public HttpResponse<String> getAllStaff()  {
+        return  staffService.getAllStaff();
     }
 
     @PostMapping
